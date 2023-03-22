@@ -1,7 +1,5 @@
 package com.drsturgis.cleanArch.domain.entity;
 
-import com.drsturgis.cleanArch.domain.valueobjects.Cpf;
-
 import java.time.LocalDate;
 
 public class Candidato extends Pessoa{
@@ -9,7 +7,7 @@ public class Candidato extends Pessoa{
     private String partido;
     private int numeroVoto;
 
-    public Candidato(String nome, Cpf cpf, LocalDate nascimento, String partido, int numeroVoto) {
+    public Candidato(String nome, String cpf, LocalDate nascimento, String partido, int numeroVoto) {
         super(nome, cpf, nascimento);
         this.partido = partido;
         this.numeroVoto =  numeroVoto;

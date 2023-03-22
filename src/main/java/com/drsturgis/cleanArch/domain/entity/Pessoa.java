@@ -1,17 +1,15 @@
 package com.drsturgis.cleanArch.domain.entity;
 
-import com.drsturgis.cleanArch.domain.valueobjects.Cpf;
-
 import java.time.LocalDate;
 
 public abstract class Pessoa {
 
     private Long id;
     private String nome;
-    private Cpf cpf;
+    private String cpf;
     private LocalDate nascimento;
 
-    public Pessoa(String nome, Cpf cpf, LocalDate nascimento) {
+    public Pessoa(String nome, String cpf, LocalDate nascimento) {
     }
 
     Pessoa(){}
@@ -20,7 +18,7 @@ public abstract class Pessoa {
         this.nome = nome;
     }
 
-    public void setCpf(Cpf cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -32,7 +30,7 @@ public abstract class Pessoa {
         return nome;
     }
 
-    public Cpf getCpf() {
+    public String getCpf() {
         return cpf;
     }
 

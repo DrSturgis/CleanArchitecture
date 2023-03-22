@@ -2,10 +2,10 @@ package com.drsturgis.cleanArch.usecases.eleitor;
 
 import com.drsturgis.cleanArch.domain.entity.Eleitor;
 import com.drsturgis.cleanArch.domain.gateway.EleitorGateway;
-import com.drsturgis.cleanArch.domain.valueobjects.Cpf;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-
+@Service
 public class NovoEleitorUseCase {
 
     private EleitorGateway eleitorGateway;
@@ -15,10 +15,10 @@ public class NovoEleitorUseCase {
     }
 
     public void save(Input input){
-        Eleitor eleitor = new Eleitor(input.nome(), input.cpf(), input.nascimento(), input.numTitulo());
+        Eleitor eleitor = new Eleitor(input.nome(), input.cpf(), input.nascimento());
         eleitorGateway.save(eleitor);
     }
 
 
-    public record Input(String nome, Cpf cpf, LocalDate nascimento, int numTitulo){}
+    public record Input(String nome, String cpf, LocalDate nascimento){}
 }
