@@ -13,6 +13,8 @@ public class Eleitor extends Pessoa{
         this.numTitulo = numTitulo;
     }
 
+    Eleitor(){}
+
     public int getNumTitulo() {
         return numTitulo;
     }
