@@ -2,6 +2,7 @@ package com.drsturgis.cleanArch.controller.eleitor;
 
 import com.drsturgis.cleanArch.usecases.eleitor.NovoEleitorUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -14,12 +15,10 @@ public class NovoEleitorController {
     private NovoEleitorUseCase novoEleitorUseCase;
 
     @PostMapping("/novo")
-    public void criarEleitor(String nome, String cpf, LocalDate nascimento) {
-        System.out.println(nome + " " + cpf + " " + nascimento);
-
-        novoEleitorUseCase.save(new NovoEleitorUseCase.Input(nome, cpf, nascimento));
+    public ResponseEntity<?> criarEleitor(String nome, String cpf, LocalDate nascimento) {
+        return novoEleitorUseCase.save(new NovoEleitorUseCase.Input(nome, cpf, nascimento));
     }
 
-    public record Request(String nome, String cpf, LocalDate nascimento){}
+    private record Request(String nome, String cpf, LocalDate nascimento){}
 
 }

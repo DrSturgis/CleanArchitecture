@@ -1,10 +1,10 @@
 package com.drsturgis.cleanArch.usecases.eleitor;
 
-import com.drsturgis.cleanArch.domain.entity.Eleitor;
 import com.drsturgis.cleanArch.domain.gateway.EleitorGateway;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
+@Service
 public class ListaEleitorCpfUseCase {
 
     private EleitorGateway eleitorGateway;
@@ -14,7 +14,7 @@ public class ListaEleitorCpfUseCase {
     }
 
 
-    public Optional<Eleitor> listaEleitorCpf(Input input){
+    public ResponseEntity<?> listaEleitorCpf(Input input){
         return eleitorGateway.findByCpf(input.cpf());
     }
 
