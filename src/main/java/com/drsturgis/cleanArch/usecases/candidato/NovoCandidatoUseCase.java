@@ -2,9 +2,11 @@ package com.drsturgis.cleanArch.usecases.candidato;
 
 import com.drsturgis.cleanArch.domain.entity.Candidato;
 import com.drsturgis.cleanArch.domain.gateway.CandidatoGateway;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
+@Service
 public class NovoCandidatoUseCase {
 
     private final CandidatoGateway candidatoGateway;

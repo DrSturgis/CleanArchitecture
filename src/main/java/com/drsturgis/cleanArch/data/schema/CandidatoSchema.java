@@ -12,7 +12,6 @@ public class CandidatoSchema {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-    @Column(nullable = false, columnDefinition = "VARCHAR(11)")
     private String cpf;
     private LocalDate nascimento;
     private String partido;
