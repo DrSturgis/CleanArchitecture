@@ -2,6 +2,7 @@ package com.drsturgis.cleanArch.usecases.candidato;
 
 import com.drsturgis.cleanArch.domain.entity.Candidato;
 import com.drsturgis.cleanArch.domain.gateway.CandidatoGateway;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -15,10 +16,17 @@ public class NovoCandidatoUseCase {
         this.candidatoGateway = candidatoGateway;
     }
 
-    public void save(Input input){
-        Candidato candidato = new Candidato(input.nome(), input.cpf(), input.nascimento(), input.partido(), input.numeroVoto());
+    public ResponseEntity<?> save(Input input){
+        if (!candidatoGateway.existsByNumVoto(input.numeroVoto()) && !candidatoGateway.existsByCpf(input.cpf())){
+            Candidato candidato = new Candidato(input.nome(), input.cpf(), input.nascimento(), input.partido(), input.numeroVoto());
+            candidatoGateway.save(candidato);
+            return ResponseEntity.ok(candidato);
+        } else {
+            return ResponseEntity.badRequest().body("Eleitor já existente.");
+        }
 
-        candidatoGateway.save(candidato);
+
+
     }
 
     public record Input(String nome, String cpf, LocalDate nascimento, String partido, int numeroVoto){}

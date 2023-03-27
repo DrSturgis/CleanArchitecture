@@ -9,12 +9,9 @@ import java.util.Optional;
 public interface CandidatoGateway {
 
     void save(Candidato candidato);
-    void update(Candidato candidato);
-    ResponseEntity<?> findByNumeroVoto(int numeroVoto);
-    Optional<Candidato> findByCpf(String cpf);
+    Optional<CandidatoSchema> findByNumeroVoto(int numeroVoto);
     void deleteById(Long id);
-    void deleteByCpf(String cpf);
     ResponseEntity<?> findAll();
-    Optional<Candidato> findByNome(String nome);
-    boolean existsByNumVoto(int numVoto);
+    boolean existsByNumVoto(int numeroVoto);
+    boolean existsByCpf(String cpf);
 }

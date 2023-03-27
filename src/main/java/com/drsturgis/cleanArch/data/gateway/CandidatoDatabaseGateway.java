@@ -22,33 +22,13 @@ public class CandidatoDatabaseGateway implements CandidatoGateway {
     }
 
     @Override
-    public void update(Candidato candidato) {
-
-    }
-
-    @Override
-    public ResponseEntity<?> findByNumeroVoto(int numeroVoto) {
-
-        if (candidatoRepository.existsByNumeroVoto(numeroVoto)){
-            return ResponseEntity.ok(candidatoRepository.findByNumeroVoto(numeroVoto));
-        } else{
-            return ResponseEntity.badRequest().body("Candidato não encontrado");
-        }
-    }
-
-    @Override
-    public Optional<Candidato> findByCpf(String cpf) {
-        return Optional.empty();
+    public Optional<CandidatoSchema> findByNumeroVoto(int numeroVoto) {
+            return candidatoRepository.findByNumeroVoto(numeroVoto);
     }
 
     @Override
     public void deleteById(Long id) {
-
-    }
-
-    @Override
-    public void deleteByCpf(String cpf) {
-
+        candidatoRepository.deleteById(id);
     }
 
     @Override
@@ -57,12 +37,12 @@ public class CandidatoDatabaseGateway implements CandidatoGateway {
     }
 
     @Override
-    public Optional<Candidato> findByNome(String nome) {
-        return Optional.empty();
+    public boolean existsByNumVoto(int numeroVoto) {
+        return candidatoRepository.existsByNumeroVoto(numeroVoto);
     }
 
     @Override
-    public boolean existsByNumVoto(int numeroVoto) {
-        return candidatoRepository.existsByNumeroVoto(numeroVoto);
+    public boolean existsByCpf(String cpf) {
+        return candidatoRepository.existsByCpf(cpf);
     }
 }
